@@ -1,0 +1,11 @@
+create index idx_products_status on public.products(status);
+create index idx_products_category on public.products(category);
+create index idx_products_slug on public.products(slug);
+create index idx_orders_user_id on public.orders(user_id);
+create index idx_orders_status on public.orders(status);
+create index idx_orders_razorpay_order_id on public.orders(razorpay_order_id);
+create index idx_order_items_order_id on public.order_items(order_id);
+create index idx_downloads_token on public.downloads(token);
+create index idx_downloads_order_id on public.downloads(order_id);
+create index idx_stock_reservations_order_id on public.stock_reservations(order_id);
+create index idx_stock_reservations_expires_at on public.stock_reservations(expires_at);

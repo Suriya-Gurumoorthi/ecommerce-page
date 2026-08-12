@@ -1,0 +1,11 @@
+.next
+node_modules
+.env
+.env.*
+!.env.local.example
+.vercel
+.pnpm-store
+dist
+coverage
+*.tsbuildinfo
+.DS_Store
