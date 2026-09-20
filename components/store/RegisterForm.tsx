@@ -26,7 +26,7 @@ export function RegisterForm() {
     }
 
     setLoading(true);
-    const { error: signUpError } = await createClient().auth.signUp({
+    const { data, error: signUpError } = await createClient().auth.signUp({
       email: parsed.data.email,
       password: parsed.data.password,
       options: { data: { full_name: parsed.data.fullName } }
@@ -35,6 +35,13 @@ export function RegisterForm() {
     if (signUpError) {
       setError(signUpError.message);
       setLoading(false);
+      return;
+    }
+
+    if (!data.session) {
+      setError("Account created, but you weren't signed in automatically. Please log in.");
+      setLoading(false);
+      router.push(`/login?redirect=${encodeURIComponent(redirectTo)}`);
       return;
     }
 

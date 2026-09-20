@@ -30,7 +30,7 @@ export function LoginForm() {
     const { data, error: signInError } = await supabase.auth.signInWithPassword(parsed.data);
 
     if (signInError || !data.user) {
-      setError("Invalid email or password.");
+      setError(signInError?.message ?? "Invalid email or password.");
       setLoading(false);
       return;
     }
